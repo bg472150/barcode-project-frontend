@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /> -->
+    <title>Bar code reader</title>
+    <script>
+        var barcode='haha';
+        var interval;
+        document.addEventListener('keypress', function(evt) {
+            // console.log(evt.code);
+            console.log('step 1');
+            // console.log(barcode);
+            // console.log(interval);
+            // if(interval)
+            //     clearInterval(interval);
+            if(evt.code=='Enter') {
+                console.log('step 2');
+                if(barcode)
+                    handleBarcode(barcode);
+                barcode='';
+                return;        
+            }
+            if(evt.key != 'Shift') {
+                console.log('step 3');
+                barcode+=evt.key;
+                console.log(evt.key);
+            }
+            console.log('step 4');
+            // interval=setInterval(()=>barcode='', 2000);
+        })
+        function handleBarcode(input_code) {
+            console.log('step 5');
+            document.querySelector('#code').innerHTML=input_code;
+        }
+    </script>
+  </head>
+  <body>
+    <h1>Bar code reader</h1>
+    <strong>bar code</strong>
+    <div id="code"></div>
+    <!-- <script>
+      alert('Hello, World!');
+    </script> -->
+  </body>
+</html>
