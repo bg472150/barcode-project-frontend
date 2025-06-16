@@ -32,11 +32,28 @@
         function handleBarcode(input_code) {
             console.log('step 5');
             document.querySelector('#code').innerHTML=input_code;
+
+            var headers = 
+
+            fetch('http://localhost:8080/teach_api/v1/signin?barcode=2')
+            .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.text();
+                })
+                .then(data => {
+                    document.querySelector('#code').innerHTML = data;
+                })
+                .catch(error => {
+                    console.error('Error:', error);
+                    document.querySelector('#code').innerHTML = 'http://localhost:8080/teach_api/v1/signin?barcode=1';
+                });
         }
     </script>
   </head>
   <body>
-    <h1>Bar code reader</h1>
+    <h1>Bar code reader v1</h1>
     <strong>bar code</strong>
     <div id="code"></div>
     <!-- <script>
